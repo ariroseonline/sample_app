@@ -99,3 +99,17 @@ padding:20px;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
 }
+
+/* ========== */
+/* = footer = */
+/* ========== */
+
+footer {
+	text-align: center;
+	margin: 10px auto 0;
+	width: 710px;
+}
+
+footer nav {
+	float:none ;
+}
