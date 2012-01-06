@@ -5,7 +5,6 @@ gem 'rails', '3.1.1'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -19,12 +18,21 @@ gem 'jquery-rails'
 
 
 group :development do
-  gem 'rspec-rails', '2.0.0.beta.18'
+  gem 'webrat'
+  
+  gem 'rspec-rails'
+  gem 'sqlite3'
 end
 
 group :test do
+  gem 'webrat'
+  
+  gem 'rspec'
   gem 'sqlite3'
-  gem 'rspec', '2.0.0.beta.18'
+end
+
+group :production do
+  gem 'pg'
 end
 
 
