@@ -29,6 +29,7 @@ GEM
       activesupport (= 3.1.1)
     activesupport (3.1.1)
       multi_json (~> 1.0)
+    annotate (2.4.1.beta1)
     arel (2.2.1)
     builder (3.0.0)
     coffee-rails (3.1.1)
@@ -81,7 +82,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (~> 0.14.6)
-    rake (0.9.2.2)
+    rake (0.8.7)
     rdoc (3.12)
       json (~> 1.4)
     rspec (2.8.0)
@@ -126,10 +127,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate (~> 2.4.1.beta)
   coffee-rails (~> 3.1.1)
   jquery-rails
   pg
   rails (= 3.1.1)
+  rake (= 0.8.7)
   rspec
   rspec-rails
   sass-rails (~> 3.1.4)

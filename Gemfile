@@ -1,6 +1,8 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
+gem 'rake', '0.8.7'
+
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -19,7 +21,7 @@ gem 'jquery-rails'
 
 group :development do
   gem 'webrat'
-  
+  gem 'annotate', '~> 2.4.1.beta'
   gem 'rspec-rails'
   gem 'sqlite3'
 end
