@@ -18,6 +18,27 @@ describe UsersController do
         #   get 'new', :id => @user.id
         #   assigns(:user).should == @user
         # end
+        
+    it "should have the right title" do
+      get 'show', :id => @user.id
+      response.should have_selector('title', :content => @user.name)
+    end
+    
+    it "should have the user's name" do
+      get 'show', :id=> @user.id
+      response.should have_selector('h1', :content => @user.name)
+    end
+    
+    it "should have a profile image" do
+      get 'show', :id=>@user.id
+      response.should have_selector('h1>img', :class =>'gravatar')
+    end
+    
+    it "should have the right URL" do
+      get'show', :id => @user.id
+      response.should have_selector('td>a', :content => user_path(@user), :href => user_path(@user))
+    end
+    
   end
   
   describe "GET 'new'" do
