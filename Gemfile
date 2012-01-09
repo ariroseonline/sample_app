@@ -28,7 +28,7 @@ end
 
 group :test do
   gem 'webrat'
-  
+  gem 'factory_girl_rails'
   gem 'rspec'
   gem 'sqlite3'
 end
