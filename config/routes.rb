@@ -2,12 +2,13 @@ SampleApp::Application.routes.draw do
   
   get "sessions/new"
 
+ # these are named routes
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
   
   root :to => 'pages#home'
   
-  #these are named routes!!!!
+  #these are named custom routes!!!!
   match '/contact', :to => 'pages#contact'
   match '/about', :to => 'pages#about'
   match '/help', :to => 'pages#help'
