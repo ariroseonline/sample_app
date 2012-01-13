@@ -1,10 +1,17 @@
 <h1>All users</h1>
 
+<%= will_paginate %>
+
 <ul class="users">
 	<% @users.each do |user| %>
-	<li>
-	  <%=gravatar_for user, :size => 30 %>
-	  <%= link_to user.name, user %>
-	</li>
+	<%= render 'user', :user=> user %>
 	<% end %>
 </ul>
+
+<%#  idiomatic to the extreme 
+replaces all of above
+<ul class="users">
+	<%# render @users  %>
+<%#></ul> %>
+
+<%= will_paginate %>

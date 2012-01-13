@@ -4,6 +4,7 @@ gem 'rails', '3.1.1'
 gem 'rake', '0.8.7'
 gem 'gravatar_image_tag'
 gem 'spork'
+gem 'will_paginate'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -25,6 +26,7 @@ group :development do
   gem 'annotate', '~> 2.4.1.beta'
   gem 'rspec-rails'
   gem 'sqlite3'
+  gem 'faker'
 end
 
 group :test do
