@@ -108,6 +108,18 @@ padding:20px;
 	border-radius: 10px;
 }
 
+/* =================== */
+/* = users show page = */
+/* =================== */
+
+ul.users {
+	margin-top:1em;
+}
+
+ul.users li {
+	list-style:none;
+}
+
 /* ================== */
 /* = user show page = */
 /* ================== */
