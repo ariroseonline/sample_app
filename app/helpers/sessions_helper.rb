@@ -22,6 +22,11 @@ module SessionsHelper
     self.current_user = nil
   end
   
+  def deny_access
+    redirect_to signin_path, :notice => "Please Sign In To Access This Page!"
+  end
+  
+  
   private
     def user_from_remember_token
       User.authenticate_with_salt(*remember_token) #the * unwraps the array ('1 layer'), into multiple arguments before sending to method
