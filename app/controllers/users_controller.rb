@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only => [:edit, :update]
+  before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
   before_filter :correct_user, :only => [:edit, :update]
+  before_filter :admin_user,   :only => [:destroy]
+  
+  # 7 REST ACTIONS #
   
   def index
     @title = "All Users"
     @users = User.paginate(:page=>params[:page])
-    
   end
   
   def show
@@ -31,7 +33,7 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find params[:id]
+    @user = User.find params[:id] #unnecessary duplicate, appears in before filter, keeping for clarity
     @title = "Edit User"
   end
   
@@ -46,6 +48,11 @@ class UsersController < ApplicationController
     end
   end
   
+  def destroy 
+    User.find(params[:id]).destroy
+    redirect_to users_path, :flash => {:success => "User deleted"}
+  end
+  
   private
     def authenticate
       deny_access unless signed_in?
@@ -54,6 +61,11 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_path) unless current_user?(@user)
+    end
+    
+    def admin_user
+      user = User.find(params[:id])
+      redirect_to(root_path) unless (current_user.admin? && !current_user?(user))
     end
     
 end
