@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
-gem 'rake', '0.8.7'
+gem 'rake'
 gem 'gravatar_image_tag'
 gem 'spork'
 gem 'will_paginate'
@@ -32,7 +32,7 @@ end
 
 group :test do
   gem 'webrat'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', '~> 1.5.0'
   gem 'rspec'
   gem 'sqlite3'
 end
