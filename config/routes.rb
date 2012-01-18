@@ -5,6 +5,7 @@ SampleApp::Application.routes.draw do
  # these are named routes
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :microposts, :only => [:create, :destroy]
   
   root :to => 'pages#home'
   
