@@ -3,9 +3,14 @@ SampleApp::Application.routes.draw do
   get "sessions/new"
 
  # these are named routes
-  resources :users
+  resources :users do #this block makes further nested urls
+    member do
+      get :following, :followers
+    end
+  end
   resources :sessions, :only => [:new, :create, :destroy]
   resources :microposts, :only => [:create, :destroy]
+  resources :relationships, :only => [:create, :destroy]
   
   root :to => 'pages#home'
   
