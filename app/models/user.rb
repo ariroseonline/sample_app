@@ -3,6 +3,15 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
   
   has_many :microposts, :dependent => :destroy
+  has_many :relationships, :dependent => :destroy, 
+                           :foreign_key => "follower_id" #rails assumes user_id
+  has_many :reverse_relationships, :dependent => :destroy,
+                                   :foreign_key => "followed_id",
+                                   :class_name => "Relationship"
+  has_many :following, :through => :relationships, :source => :followed #plural given to rails explicitly
+  has_many :followers, :through => :reverse_relationships,
+                                   :source => :follower
+  
   
   email_regex = /\A[\w+\-.]+@[a-z\d.\-]+\.[a-z]+\z/i
   
@@ -23,6 +32,18 @@ class User < ActiveRecord::Base
   
   def feed
     Micropost.where("user_id = ?", self.id) #ensure escaped id input with ? notation
+  end
+  
+  def following?(followed)
+    self.relationships.find_by_followed_id(followed)  #followed object gets turned into id by rails
+  end
+  
+  def follow!(followed)
+    self.relationships.create!(:followed_id => followed.id)
+  end
+  
+  def unfollow!(followed)
+    self.relationships.find_by_followed_id(followed).destroy
   end
   
   #class method
