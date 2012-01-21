@@ -7,6 +7,15 @@ class Micropost < ActiveRecord::Base
   validates :user_id, :presence => true
   
   default_scope :order => "microposts.created_at DESC"
+  
+  scope :from_users_followed_by, lambda { |user| followed_by(user) } #scopes are for performance...like defining a method
+  
+  private
+    def self.followed_by(user) #class method cause there isn't a micropost object at this point
+       following_ids = %(SELECT followed_id FROM relationships WHERE  
+                        follower_id = :user_id) #this is an SQL subselect which is efficient
+        self.where("user_id IN (#{following_ids}) OR user_id = :user_id", {:user_id => user })
+    end
 
 end
 # == Schema Information

@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   end
   
   def feed
-    Micropost.where("user_id = ?", self.id) #ensure escaped id input with ? notation
+    Micropost.from_users_followed_by(self) #another ex: where("user_id = ?", self.id) #ensures escaped id input with ? notation
   end
   
   def following?(followed)
