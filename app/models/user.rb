@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
   has_many :microposts, :dependent => :destroy
   has_many :relationships, :dependent => :destroy, 
                            :foreign_key => "follower_id" #rails assumes user_id
-  has_many :reverse_relationships, :dependent => :destroy,
-                                   :foreign_key => "followed_id",
-                                   :class_name => "Relationship"
+  has_many :reverse_relationships, :foreign_key => "followed_id",
+                                   :class_name => "Relationship",
+                                   :dependent => :destroy
   has_many :following, :through => :relationships, :source => :followed #plural given to rails explicitly
   has_many :followers, :through => :reverse_relationships,
                                    :source => :follower

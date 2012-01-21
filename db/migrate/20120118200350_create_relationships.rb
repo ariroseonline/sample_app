@@ -9,6 +9,5 @@ class CreateRelationships < ActiveRecord::Migration
     add_index :relationships, :follower_id
     add_index :relationships, :followed_id
     
-    
   end
 end
